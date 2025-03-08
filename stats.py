@@ -1,4 +1,7 @@
+from collections import Counter
 
-
-def get_num_words(text):
+def word_count(text):
     return len(text.split())
+
+def char_count(text) -> Counter:
+    return Counter(text.lower())

@@ -1,23 +1,24 @@
-print("greetings boots")
+from stats import word_count, char_count
+from sys import argv
 
-from collections import Counter
-from stats import get_num_words
+# path_to_file = "books/frankenstein.txt"
 
-path_to_file = 'books/frankenstein.txt'
+if len(argv) < 2:
+    print("Usage: python main.py <path to book>")
+    exit(1)
+
+path_to_file = argv[1]
 
 with open(path_to_file) as f:
     file_contents = f.read()
 
-def word_count(text):
-    return len(text.split())
-
-def char_count(text):
-    return Counter(text.lower())
-
-print(f'''
-{char_count(file_contents)=}
-{word_count(file_contents)=}
-# {char_count(file_contents)=}
-# {char_count(file_contents)=}
-''')
-
+print(
+    f"""
+============ BOOKBOT ============
+Analyzing book found at {path_to_file}...
+----------- Word Count ----------
+Found {word_count(file_contents)} total words
+--------- Character Count -------
+{[f"{k}: {v}" for k,v in char_count(file_contents).most_common() if k.isalnum()]}
+"""
+)

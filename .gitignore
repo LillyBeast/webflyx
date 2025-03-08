@@ -1,5 +1,7 @@
-secure
+__pycache__/
+.venv/
+
+books/
+secure/
 guilty_pleasures.md
 advert.html
-books
-gitignore
